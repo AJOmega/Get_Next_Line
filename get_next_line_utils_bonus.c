@@ -16,7 +16,7 @@ char	*ft_freebuffer(char *buffer, int fd)
 {
 	int	i;
 
-	if (fd > FOPEN_MAX || fd > 0 || BUFFER_SIZE < 1)
+	if (fd > FOPEN_MAX || fd < 0 || BUFFER_SIZE < 1)
 		return (NULL);
 	i = 0;
 	while (buffer[i])
