@@ -53,7 +53,7 @@ char	*ft_strjoin_gnl(char *line, char *buffer)
 {
 	char	*newline;
 	int		i;
-	int		i_b;
+	int		j;
 	int		len_l;
 	int		len_buf;
 
@@ -65,12 +65,12 @@ char	*ft_strjoin_gnl(char *line, char *buffer)
 	if (!newline)
 		return (NULL);
 	i = -1;
-	i_b = i;
+	j = i;
 	while (++i < len_l)
 		newline[i] = line[i];
-	while (++i_b < len_buf)
-		newline[i + i_b] = buffer[i_b];
-	newline[i + i_b] = 0;
+	while (++j < len_buf)
+		newline[i + j] = buffer[j];
+	newline[i + j] = 0;
 	free(line);
 	return (newline);
 }

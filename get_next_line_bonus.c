@@ -16,25 +16,25 @@ char	*get_next_line(int fd)
 {
 	static char	buffer[FOPEN_MAX][BUFFER_SIZE + 1];
 	char		*line;
-	int			is_newline;
+	int			flag;
 	int			i;
-	int			j;
+	int			i_0;
 
 	if (BUFFER_SIZE < 1 || fd > FOPEN_MAX || read(fd, 0, 0) < 0)
 		return (ft_freebuffer(buffer[fd], fd));
 	line = NULL;
-	is_newline = 0;
-	while ((!is_newline && buffer[fd][0]) || (read(fd, buffer[fd], BUFFER_SIZE) > 0))
+	flag = 0;
+	while (!flag && (buffer[fd][0] || (read(fd, buffer[fd], BUFFER_SIZE) > 0)))
 	{
 		i = 0;
-		j = 0;
+		i_0 = 0;
 		line = ft_strjoin_gnl(line, buffer[fd]);
 		while (buffer[fd][i])
 		{
-			if (is_newline)
-				buffer[fd][j++] = buffer[fd][i];
+			if (flag)
+				buffer[fd][i_0++] = buffer[fd][i];
 			if (buffer[fd][i] == '\n')
-				is_newline = 1;
+				flag = 1;
 			buffer[fd][i++] = 0;
 		}
 	}

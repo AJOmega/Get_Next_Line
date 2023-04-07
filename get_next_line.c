@@ -18,7 +18,7 @@ char	*get_next_line(int fd)
 	char		*line;
 	int			flag;
 	int			i;
-	int			i_0;
+	int			j;
 
 	if (BUFFER_SIZE < 1 || read(fd, 0, 0) < 0)
 		return (ft_freebuffer(buffer));
@@ -27,12 +27,12 @@ char	*get_next_line(int fd)
 	while (!flag && (buffer[0] || (read(fd, buffer, BUFFER_SIZE) > 0)))
 	{
 		i = 0;
-		i_0 = 0;
+		j = 0;
 		line = ft_strjoin_gnl(line, buffer);
 		while (buffer[i])
 		{
 			if (flag)
-				buffer[i_0++] = buffer[i];
+				buffer[j++] = buffer[i];
 			if (buffer[i] == '\n')
 				flag = 1;
 			buffer[i++] = 0;
